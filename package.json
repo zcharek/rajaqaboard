@@ -26,6 +26,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
+  "proxy": "https://raja-group.atlassian.net",
   "eslintConfig": {
     "extends": [
       "react-app",

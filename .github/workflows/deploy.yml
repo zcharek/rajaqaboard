@@ -33,6 +33,7 @@ jobs:
       - name: Create .env file
         run: |
           echo "REACT_APP_QA_TOUCH_API_TOKEN=${{ secrets.QA_TOUCH_API_TOKEN }}" > .env
+          echo "REACT_APP_JIRA_QA_DASHBOARD=${{ secrets.JIRA_QA_DASHBOARD }}" >> .env
 
       - name: Build
         run: npm run build

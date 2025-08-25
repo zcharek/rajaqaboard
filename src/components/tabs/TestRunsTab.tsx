@@ -2,7 +2,14 @@
 import React from "react";
 import { TestRun, TestCase } from "../../context/QATouchContext";
 import TestRunsTable from "../TestRunsTable";
-import { AlertCircle, RefreshCw, Bot, FileText, Target, Activity } from "lucide-react";
+import {
+  AlertCircle,
+  RefreshCw,
+  Bot,
+  FileText,
+  Target,
+  Activity,
+} from "lucide-react";
 
 interface TestRunsTabProps {
   testRuns: TestRun[];
@@ -12,17 +19,19 @@ interface TestRunsTabProps {
   refreshData: () => void;
 }
 
-const TestRunsTab: React.FC<TestRunsTabProps> = ({ 
-  testRuns, 
-  testCases, 
-  loading, 
-  error, 
-  refreshData 
+const TestRunsTab: React.FC<TestRunsTabProps> = ({
+  testRuns,
+  testCases,
+  loading,
+  error,
+  refreshData,
 }) => {
   // Calculs des métriques
   const totalCases = testCases.length;
-  const automatedCases = testCases.filter(tc => tc.mode === 'automation').length;
-  const manualCases = testCases.filter(tc => tc.mode === 'manual').length;
+  const automatedCases = testCases.filter(
+    (tc) => tc.mode === "automation"
+  ).length;
+  const manualCases = testCases.filter((tc) => tc.mode === "manual").length;
   const totalTestRuns = testRuns.length;
 
   if (error) {

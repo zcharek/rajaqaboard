@@ -171,7 +171,7 @@ function TestRunsTable({ testRuns }: TestRunsTableProps) {
             return orderA - orderB;
           })
           .map((testRun) => (
-            <div key={testRun.testRunId}>{getTestRunCard(testRun)}</div>
+            <div key={testRun.id}>{getTestRunCard(testRun)}</div>
           ))}
       </div>
     </div>
