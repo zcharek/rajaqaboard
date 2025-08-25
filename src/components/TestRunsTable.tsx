@@ -17,16 +17,16 @@ function TestRunsTable({ testRuns }: TestRunsTableProps) {
             <img
               src={
                 testRun.context === "JPG"
-                  ? "/jpg.jpeg"
+                  ? process.env.PUBLIC_URL + "/jpg.jpeg"
                   : testRun.context === "KALAMAZOO"
-                  ? "/kalamazoo.png"
+                  ? process.env.PUBLIC_URL + "/kalamazoo.png"
                   : testRun.context.startsWith("BERNARD")
-                  ? "/bernard.jpeg"
+                  ? process.env.PUBLIC_URL + "/bernard.jpeg"
                   : testRun.context === "MONDOFFICE"
-                  ? "/mondoffice.png"
+                  ? process.env.PUBLIC_URL + "/mondoffice.png"
                   : testRun.context === "TEMPLATE"
-                  ? "/smoke.jpg"
-                  : "/raja.webp"
+                  ? process.env.PUBLIC_URL + "/smoke.jpg"
+                  : process.env.PUBLIC_URL + "/raja.webp"
               }
               alt={testRun.context}
               className="w-8 h-8 rounded-full"
