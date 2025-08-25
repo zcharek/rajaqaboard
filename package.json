@@ -2,6 +2,7 @@
   "name": "qatouch-dashboard",
   "version": "1.0.0",
   "description": "Dashboard pour visualiser les données QA Touch - Tests Auto et Manuels",
+  "homepage": "https://[votre-username].github.io/qaboard",
   "private": true,
   "dependencies": {
     "@types/node": "^18.0.0",
@@ -21,7 +22,9 @@
     "build": "react-scripts build",
     "build:prod": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +47,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.0",
     "autoprefixer": "^10.4.0",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.0",
     "tailwindcss": "^3.3.0"
   }
