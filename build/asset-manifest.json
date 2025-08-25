@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.1107bd97.css",
-    "main.js": "/static/js/main.8b4d1895.js",
-    "index.html": "/index.html",
-    "main.1107bd97.css.map": "/static/css/main.1107bd97.css.map",
-    "main.8b4d1895.js.map": "/static/js/main.8b4d1895.js.map"
+    "main.css": "/rajaqaboard/static/css/main.1107bd97.css",
+    "main.js": "/rajaqaboard/static/js/main.c779b444.js",
+    "index.html": "/rajaqaboard/index.html",
+    "main.1107bd97.css.map": "/rajaqaboard/static/css/main.1107bd97.css.map",
+    "main.c779b444.js.map": "/rajaqaboard/static/js/main.c779b444.js.map"
   },
   "entrypoints": [
     "static/css/main.1107bd97.css",
-    "static/js/main.8b4d1895.js"
+    "static/js/main.c779b444.js"
   ]
 }

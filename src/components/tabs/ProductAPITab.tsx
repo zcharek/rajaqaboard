@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState } from "react";
-import { Search, Database, Globe, Package } from "lucide-react";
+import { Search } from "lucide-react";
 
 const ProductAPITab: React.FC = () => {
   const [selectedEnvironment, setSelectedEnvironment] = useState<string>("");

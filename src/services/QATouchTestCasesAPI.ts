@@ -93,8 +93,6 @@ export const fetchAllTestCases = async (): Promise<TestCase[]> => {
       // L'endpoint /v1/get/cases a un problème CORS
 
       // Analyser les modes basés sur les titres/descriptions des cas de tests
-      let automatedCount = 0;
-      let manualCount = 0;
       // Logique d'analyse des types
 
       allTestCases.forEach((testCase) => {
@@ -104,14 +102,11 @@ export const fetchAllTestCases = async (): Promise<TestCase[]> => {
         // Logique basée sur le Type
         if (type === "acceptance") {
           testCase.mode = "automation";
-          automatedCount++;
         } else if (type === "functional") {
           testCase.mode = "manual";
-          manualCount++;
         } else {
           // Fallback pour les types inconnus
           testCase.mode = "manual"; // Par défaut: manual
-          manualCount++;
         }
       });
     } catch (modesError: any) {

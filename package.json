@@ -2,7 +2,7 @@
   "name": "qatouch-dashboard",
   "version": "1.0.0",
   "description": "Dashboard pour visualiser les données QA Touch - Tests Auto et Manuels",
-  "homepage": "https://[votre-username].github.io/qaboard",
+  "homepage": "https://zcharek.github.io/rajaqaboard",
   "private": true,
   "dependencies": {
     "@types/node": "^18.0.0",
