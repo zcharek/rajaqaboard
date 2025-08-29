@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/rajaqaboard/static/css/main.64ea1439.css",
+    "main.js": "/rajaqaboard/static/js/main.7a641b9d.js",
+    "static/js/159.f52cacbb.chunk.js": "/rajaqaboard/static/js/159.f52cacbb.chunk.js",
+    "static/js/661.6685d3f3.chunk.js": "/rajaqaboard/static/js/661.6685d3f3.chunk.js",
+    "static/js/670.05182e29.chunk.js": "/rajaqaboard/static/js/670.05182e29.chunk.js",
+    "static/js/336.5d6034d4.chunk.js": "/rajaqaboard/static/js/336.5d6034d4.chunk.js",
+    "static/js/899.ce9dbf1d.chunk.js": "/rajaqaboard/static/js/899.ce9dbf1d.chunk.js",
+    "index.html": "/rajaqaboard/index.html",
+    "main.64ea1439.css.map": "/rajaqaboard/static/css/main.64ea1439.css.map",
+    "main.7a641b9d.js.map": "/rajaqaboard/static/js/main.7a641b9d.js.map",
+    "159.f52cacbb.chunk.js.map": "/rajaqaboard/static/js/159.f52cacbb.chunk.js.map",
+    "661.6685d3f3.chunk.js.map": "/rajaqaboard/static/js/661.6685d3f3.chunk.js.map",
+    "670.05182e29.chunk.js.map": "/rajaqaboard/static/js/670.05182e29.chunk.js.map",
+    "336.5d6034d4.chunk.js.map": "/rajaqaboard/static/js/336.5d6034d4.chunk.js.map",
+    "899.ce9dbf1d.chunk.js.map": "/rajaqaboard/static/js/899.ce9dbf1d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.64ea1439.css",
+    "static/js/main.7a641b9d.js"
+  ]
+}
