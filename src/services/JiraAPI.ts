@@ -3,7 +3,7 @@ import axios from "axios";
 // Configuration Jira
 const JIRA_CONFIG = {
   apiToken: process.env.REACT_APP_JIRA_QA_DASHBOARD || "",
-  email: process.env.REACT_APP_JIRA_EMAIL || "boubker.bribri.ext@raja.fr",
+  email: process.env.REACT_APP_JIRA_EMAIL || "",
 };
 
 // Headers d'authentification pour Jira
