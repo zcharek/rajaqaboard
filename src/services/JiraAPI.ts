@@ -2,20 +2,21 @@ import axios from "axios";
 
 // Configuration Jira
 const JIRA_CONFIG = {
-  baseURL:
-    process.env.REACT_APP_JIRA_BASE_URL || "https://raja-group.atlassian.net",
   apiToken: process.env.REACT_APP_JIRA_QA_DASHBOARD || "",
   email: process.env.REACT_APP_JIRA_EMAIL || "boubker.bribri.ext@raja.fr",
 };
 
 // Headers d'authentification pour Jira
-const getJiraHeaders = () => ({
-  Authorization: `Basic ${btoa(
-    `${JIRA_CONFIG.email}:${JIRA_CONFIG.apiToken}`
-  )}`,
+const headers = {
   Accept: "application/json",
+  "Access-Control-Allow-Origin": "*",
   "Content-Type": "application/json",
-});
+};
+
+const auth = {
+  username: JIRA_CONFIG.email,
+  password: JIRA_CONFIG.apiToken
+}
 
 // Interface pour les tickets avec version
 export interface TicketWithVersion {
@@ -129,8 +130,6 @@ export interface JiraBoardsResponse {
 // Fonction pour récupérer tous les boards Jira
 export const fetchJiraBoards = async (): Promise<JiraBoard[]> => {
   try {
-    const headers = getJiraHeaders();
-
     // Récupérer tous les boards avec pagination
     let allBoards: JiraBoard[] = [];
     let startAt = 0;
@@ -140,9 +139,10 @@ export const fetchJiraBoards = async (): Promise<JiraBoard[]> => {
 
     do {
       const response = await axios.get<JiraBoardsResponse>(
-        `https://raja-group.atlassian.net/rest/agile/1.0/board?startAt=${startAt}&maxResults=${maxResults}`,
+        `/rest/agile/1.0/board?startAt=${startAt}&maxResults=${maxResults}`,
         {
           headers,
+          auth,
           timeout: 15000,
         }
       );
@@ -302,9 +302,10 @@ export const fetchJiraBoards = async (): Promise<JiraBoard[]> => {
 export const fetchJiraBoardDetails = async (boardId: number): Promise<any> => {
   try {
     const response = await axios.get(
-      `https://raja-group.atlassian.net/rest/agile/1.0/board/${boardId}`,
+      `/rest/agile/1.0/board/${boardId}`,
       {
-        headers: getJiraHeaders(),
+        headers,
+        auth,
         timeout: 15000,
       }
     );
@@ -353,9 +354,10 @@ export const fetchJiraBoardSprints = async (
 ): Promise<JiraSprint[]> => {
   try {
     const response = await axios.get(
-      `https://raja-group.atlassian.net/rest/agile/1.0/board/${boardId}/sprint`,
+      `/rest/agile/1.0/board/${boardId}/sprint`,
       {
-        headers: getJiraHeaders(),
+        headers,
+        auth,
         params: {
           state: "active,future", // Récupérer les sprints actifs et futurs
           maxResults: 50,
@@ -378,9 +380,10 @@ export const fetchJiraBoardSprints = async (
 export const fetchSprintDetails = async (sprintId: number): Promise<any> => {
   try {
     const response = await axios.get(
-      `https://raja-group.atlassian.net/rest/agile/1.0/sprint/${sprintId}`,
+      `/rest/agile/1.0/sprint/${sprintId}`,
       {
-        headers: getJiraHeaders(),
+        headers,
+        auth,
         timeout: 15000,
       }
     );
@@ -399,9 +402,10 @@ export const fetchSprintDetails = async (sprintId: number): Promise<any> => {
 export const fetchSprintIssues = async (sprintId: number): Promise<any[]> => {
   try {
     const response = await axios.get(
-      `https://raja-group.atlassian.net/rest/agile/1.0/sprint/${sprintId}/issue`,
+      `/rest/agile/1.0/sprint/${sprintId}/issue`,
       {
-        headers: getJiraHeaders(),
+        headers,
+        auth,
         params: {
           maxResults: 1000,
           fields:
@@ -427,9 +431,10 @@ export const fetchProjectVersions = async (
 ): Promise<JiraVersion[]> => {
   try {
     const response = await axios.get(
-      `https://raja-group.atlassian.net/rest/api/3/project/${projectKey}/versions`,
+      `/rest/api/3/project/${projectKey}/versions`,
       {
-        headers: getJiraHeaders(),
+        headers,
+        auth,
         timeout: 15000,
       }
     );
@@ -448,9 +453,10 @@ export const fetchIssuesByVersion = async (
 ): Promise<any[]> => {
   try {
     const response = await axios.get(
-      `https://raja-group.atlassian.net/rest/api/3/search`,
+      `/rest/api/3/search`,
       {
-        headers: getJiraHeaders(),
+        headers,
+        auth,
         params: {
           jql: `project = ${projectKey} AND fixVersion = "${versionName}"`,
           maxResults: 1000,
@@ -483,9 +489,10 @@ export const fetchBoardIssues = async (boardId: number): Promise<any[]> => {
 
     do {
       const response = await axios.get(
-        `https://raja-group.atlassian.net/rest/agile/1.0/board/${boardId}/issue`,
+        `/rest/agile/1.0/board/${boardId}/issue`,
         {
-          headers: getJiraHeaders(),
+          headers,
+          auth,
           params: {
             startAt: startAt,
             maxResults: maxResults,
@@ -518,9 +525,10 @@ export const fetchUnreleasedVersions = async (
 ): Promise<JiraVersion[]> => {
   try {
     const response = await axios.get(
-      `https://raja-group.atlassian.net/rest/api/3/project/${projectKey}/versions`,
+      `/rest/api/3/project/${projectKey}/versions`,
       {
-        headers: getJiraHeaders(),
+        headers,
+        auth,
         params: {
           status: "unreleased",
         },
@@ -541,13 +549,12 @@ export const fetchUnreleasedVersions = async (
 // Fonction pour récupérer les tickets TNR du board "DF QA Automation"
 export const fetchTNRTickets = async (): Promise<TNRTicket[]> => {
   try {
-    const headers = getJiraHeaders();
-
     // Récupérer les tickets du board 349 avec le statut "Point d'attention"
     const response = await axios.get<{ issues: TNRTicket[] }>(
-      `https://raja-group.atlassian.net/rest/agile/1.0/board/349/issue`,
+      `/rest/agile/1.0/board/349/issue`,
       {
         headers,
+        auth,
         params: {
           jql: 'project = AUT AND status = "Point d\'attention"',
           maxResults: 100,
@@ -565,7 +572,7 @@ export const fetchTNRTickets = async (): Promise<TNRTicket[]> => {
             const linksResponse = await axios.get<{
               fields: { issuelinks: IssueLink[] };
             }>(
-              `https://raja-group.atlassian.net/rest/api/3/issue/${ticket.key}?fields=issuelinks`,
+              `/rest/api/3/issue/${ticket.key}?fields=issuelinks`,
               {
                 headers,
               }
