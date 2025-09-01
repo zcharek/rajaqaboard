@@ -5,7 +5,7 @@ import { fetchAllTestRuns } from "../services/QATouchRealAPI";
 import { TestCase } from "../types/TestCase";
 import { TestRun } from "../context/QATouchContext";
 import Tabs from "./Tabs";
-import { Play, FileText, Zap, Database, Trello, Loader2 } from "lucide-react";
+import { Play, Zap, Database, Loader2 } from "lucide-react";
 
 // Lazy loading des composants pour améliorer les performances
 const AccesRapideTab = lazy(() => import("./tabs/AccesRapideTab"));
@@ -95,11 +95,11 @@ const Dashboard: React.FC = () => {
       label: "Product API",
       icon: <Database className="h-5 w-5" />,
     },
-    {
+    /* {
       id: "jira-boards",
       label: "SPRINTS",
       icon: <Trello className="h-5 w-5" />,
-    },
+    },*/
     {
       id: "acces-rapide",
       label: "Accès rapide",
@@ -110,11 +110,11 @@ const Dashboard: React.FC = () => {
       label: "Test Runs",
       icon: <Play className="h-5 w-5" />,
     },
-    {
+    /*  {
       id: "tnr",
       label: "TNR",
       icon: <FileText className="h-5 w-5" />,
-    },
+    },*/
   ];
 
   return (
